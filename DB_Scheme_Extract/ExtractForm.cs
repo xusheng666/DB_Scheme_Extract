@@ -35,7 +35,8 @@ namespace DB_Scheme_Extract
                 string appPath = Path.GetDirectoryName(Application.ExecutablePath);
 
                 GenerateClient client = new GenerateClient();
-                client.generateScripts(connProp, appPath);
+                string outputPath = client.generateScripts(connProp, appPath);
+                resultTxt.Text = outputPath;
             }
         }
     }

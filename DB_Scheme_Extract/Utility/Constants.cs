@@ -25,6 +25,9 @@ namespace DB_Scheme_Extract.Utility
         public const string PATH_VIEW = seperator + "VIEW";
         public const string PATH_TRIGGER = seperator + "TRIGGER";
 
+        public const string CONN_CLOSED = "Closed";
+        public const string CONN_OPEN = "Open";
+
         public static Dictionary<string, string> filePathDict = new Dictionary<string, string>()
         {
 	        {TYPE_TABLE, PATH_TABLE},

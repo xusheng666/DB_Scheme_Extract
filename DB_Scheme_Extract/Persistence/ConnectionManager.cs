@@ -4,25 +4,18 @@ using System.Linq;
 using System.Web;
 using Oracle.DataAccess.Client;
 using DB_Scheme_Extract.Persistence;
+using DB_Scheme_Extract.Utility;
 
 namespace DB_Scheme_Extract.Persistence
 {
     public class ConnectionManager
     {
-        public ConnectionManager(ConnectionProperty inputProp)
-        {
-            prop = inputProp;
-            initialDBConn();
-        }
-
-        public const string CONN_CLOSED = "Closed";
-        public const string CONN_OPEN = "Open";
-
         private static List<OracleConnection> connPool = new List<OracleConnection>();
         private static ConnectionProperty prop = new ConnectionProperty();
 
-        private static void initialDBConn()
+        public static void initialDBConn(ConnectionProperty inputProp)
         {
+            prop = inputProp;
             for (int i = 0; i < 5; i++)
             {
                 newConnection();
@@ -35,8 +28,12 @@ namespace DB_Scheme_Extract.Persistence
 
             foreach (var item in connPool)
             {
-                if (item.State.ToString() == CONN_OPEN)
+                if (item.State.ToString() != null)
                 {
+                    if (item.State.ToString() == Constants.CONN_CLOSED)
+                    {
+                        item.Open();
+                    }
                     conn = item;
                     break;
                 }

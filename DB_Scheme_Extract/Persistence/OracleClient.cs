@@ -10,7 +10,8 @@ namespace DB_Scheme_Extract.Persistence
 {
     class OracleClient
     {
-        public static List<string> queryObjNameList(OracleConnection conn, string objType)
+
+        public static List<string> queryObjNameList(string objType)
         {
             List<string> objNameList = new List<string>();
             try
@@ -18,18 +19,16 @@ namespace DB_Scheme_Extract.Persistence
                 string sqlText = DBSQL.QUERYOBJECTSLISTSQL;
                 if (!String.IsNullOrEmpty(sqlText))
                 {
-                    conn.Open();
-                    sqlText = sqlText.Replace("?", objType);
+                    sqlText = sqlText.Replace("?", "'" + objType + "'");
 
-                    DataSet ds = OracleClient.getResultTable(conn, sqlText);
+                    DataSet ds = getResultTable(ConnectionManager.getConnection(), sqlText);
                     if (ds.Tables.Count > 0)
                     {
                         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                         {
-                            objNameList.Add(ds.Tables[0].Rows[i][0].ToString());
+                            objNameList.Add(ds.Tables[0].Rows[i][1].ToString());
                         }
                     }
-                    conn.Close();
                 }
             }
             catch (Exception)

@@ -11,23 +11,10 @@ namespace DB_Scheme_Extract.Business
 {
     abstract class GenerateTemplate
     {
-        private ConnectionProperty localProp = null;
-        public void initialConnProp(ConnectionProperty prop)
-        {
-            localProp = prop;
-        }
-
-        // common method for subclass using
-        public OracleConnection getConnection()
-        {
-            OracleConnection conn = ConnectionManager.getConnection();
-            return conn;
-        }
-
         // Step 1: get all object name list for the object type
         public List<string> getObjNameList(string objType)
         {
-            List<string> objNameList = OracleClient.queryObjNameList(getConnection(), objType);
+            List<string> objNameList = OracleClient.queryObjNameList(objType);
             return objNameList;
         }
 
@@ -35,10 +22,10 @@ namespace DB_Scheme_Extract.Business
         abstract public string generateObjList(List<string> objNameList, string objType);
 
         // Step 3: write the generated script into rootpath
-        public string writeStringToDisk(string rootPath, string objType, string scriptStr)
+        public string writeStringToDisk(string rootPath, string objType, string scriptStr, string userID)
         {
             FileUtil fu = new FileUtil();
-            string fileName = localProp.userID.ToLower() + "-db-ddl-"+Constants.exeSeqDict[objType];
+            string fileName = userID.ToLower() + "-db-ddl-"+Constants.exeSeqDict[objType];
             fu.setRootPath(rootPath);
 
             string outputFileName = fu.writeScript2CorrectFile(scriptStr, fileName);

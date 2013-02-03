@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.result = new System.Windows.Forms.Label();
             this.message = new System.Windows.Forms.Label();
             this.generate = new System.Windows.Forms.Button();
             this.exportPath = new System.Windows.Forms.TextBox();
@@ -42,8 +43,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.resultTxt = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -53,11 +57,12 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(503, 249);
+            this.tabControl1.Size = new System.Drawing.Size(503, 313);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.message);
             this.tabPage1.Controls.Add(this.generate);
             this.tabPage1.Controls.Add(this.exportPath);
@@ -71,10 +76,19 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(495, 223);
+            this.tabPage1.Size = new System.Drawing.Size(495, 287);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // result
+            // 
+            this.result.AutoSize = true;
+            this.result.Location = new System.Drawing.Point(6, 15);
+            this.result.Name = "result";
+            this.result.Size = new System.Drawing.Size(104, 13);
+            this.result.TabIndex = 11;
+            this.result.Text = "Success write to file:";
             // 
             // message
             // 
@@ -86,7 +100,7 @@
             // 
             // generate
             // 
-            this.generate.Location = new System.Drawing.Point(25, 194);
+            this.generate.Location = new System.Drawing.Point(25, 256);
             this.generate.Name = "generate";
             this.generate.Size = new System.Drawing.Size(117, 23);
             this.generate.TabIndex = 8;
@@ -150,7 +164,7 @@
             this.dataSource.Name = "dataSource";
             this.dataSource.Size = new System.Drawing.Size(251, 20);
             this.dataSource.TabIndex = 1;
-            this.dataSource.Text = "mas-proddb/udevext";
+            this.dataSource.Text = "localhost/extdev";
             // 
             // label1
             // 
@@ -176,17 +190,36 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // resultTxt
+            // 
+            this.resultTxt.Location = new System.Drawing.Point(9, 46);
+            this.resultTxt.Multiline = true;
+            this.resultTxt.Name = "resultTxt";
+            this.resultTxt.Size = new System.Drawing.Size(406, 44);
+            this.resultTxt.TabIndex = 12;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.result);
+            this.panel1.Controls.Add(this.resultTxt);
+            this.panel1.Location = new System.Drawing.Point(16, 147);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(473, 103);
+            this.panel1.TabIndex = 13;
+            // 
             // ExtractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 273);
+            this.ClientSize = new System.Drawing.Size(527, 325);
             this.Controls.Add(this.tabControl1);
             this.Name = "ExtractForm";
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -207,6 +240,9 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button generate;
         private System.Windows.Forms.Label message;
+        private System.Windows.Forms.Label result;
+        private System.Windows.Forms.TextBox resultTxt;
+        private System.Windows.Forms.Panel panel1;
 
     }
 }

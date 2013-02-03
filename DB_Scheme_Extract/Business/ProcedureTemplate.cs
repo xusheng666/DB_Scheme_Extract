@@ -15,8 +15,8 @@ namespace DB_Scheme_Extract.Business
 
         override public string generateObjList(List<string> objectList, string objType)
         {
-            OracleConnection connOri = getConnection();
-            connOri.Open();
+            OracleConnection connOri = ConnectionManager.getConnection();
+            //connOri.Open();
             // query sp script and updated to target db
             try
             {
@@ -76,7 +76,7 @@ namespace DB_Scheme_Extract.Business
                     sqlText += " ORDER BY LINE ASC ";
 
                     DataSet ds = OracleClient.getResultTable(conn, sqlText);
-
+                    List<string> noDataInSysTableList = new List<string>();
                     if (ds.Tables.Count > 0)
                     {
                         for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
@@ -85,10 +85,11 @@ namespace DB_Scheme_Extract.Business
                             {
                                 string firstLine = ds.Tables[0].Rows[i][4].ToString();
 
-                                int startInt = firstLine.IndexOf(objName.ToLower());
+                                int startInt = firstLine.ToUpper().IndexOf(objName.ToUpper());
                                 if (startInt == -1)
                                 {
-                                    startInt = firstLine.IndexOf(objName);
+                                    noDataInSysTableList.Add(objName);
+                                    continue;
                                 }
                                 string trimSpaceLine = firstLine.Substring(startInt);
                                 //string updFirstLine = firstLine.Replace(objName, " MS9DJA." + objName).Replace(objName.ToLower(), " MS9DJA." + objName);

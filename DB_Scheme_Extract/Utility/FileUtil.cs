@@ -14,8 +14,9 @@ namespace DB_Scheme_Extract.Utility
         // write the deploy script to correct path
         public string writeScript2CorrectFile(string wholeScript, string fileName)
         {
-            writeText2NewFile(DEFAULT_ROOT_PATH + suffixFolder(), fileName + "//" + getTodayDateStr() + ".sql", wholeScript);
-            return (DEFAULT_ROOT_PATH + suffixFolder() + "//" + fileName + "//" + getTodayDateStr() + ".sql").Replace("//", "\\");
+            string targetPath = (DEFAULT_ROOT_PATH + "//" + fileName + "-" + getTodayDateStr() + ".sql").Replace("//", "\\");
+            writeText2NewFile(DEFAULT_ROOT_PATH, fileName + "-" + getTodayDateStr() + ".sql", wholeScript);
+            return targetPath;
         }
 
         public void setRootPath(string path)
