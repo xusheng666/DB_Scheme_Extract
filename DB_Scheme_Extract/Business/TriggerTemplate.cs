@@ -9,7 +9,7 @@ using DB_Scheme_Extract.Utility;
 
 namespace DB_Scheme_Extract.Business
 {
-    class ProcedureTemplate : GenerateTemplate
+    class TriggerTemplate : GenerateTemplate
     {
         override public string generateObjList(List<string> objectList, string objType)
         {
@@ -19,38 +19,16 @@ namespace DB_Scheme_Extract.Business
             try
             {
                 string spFinally = "";
-                string grantText = "";
-                string wholeScript = "";
                 foreach (var item in objectList)
                 {
-                    string spScript = genScript(connOri, item, objType);
-                    if (objType.Equals(Constants.TYPE_PROCEDURE) || objType.Equals(Constants.TYPE_FUNCTION))
-                    {
-                        string grantScript = "";
-                        grantScript = DBSQL.SP_GRANT.Replace("?", item);
-                        grantText += grantScript;
-                        grantText += "\r\n";
-                    }
-                    //break;
+                    string spScript = genScript(connOri, null, objType);
                     // prepare script write to file
                     spFinally += spScript + "/\r\n";
 
-                    // for Package or Type there will be one more object called Package Body and Type Body
-                    string bodyScript = null;
-                    if (Constants.TYPE_PACKAGE.Equals(objType) || Constants.PATH_TYPE.Equals(objType))
-                    {
-                        bodyScript = genScript(connOri, item, objType + " BODY");
-                        if (!String.IsNullOrEmpty(bodyScript))
-                        {
-                            spFinally += bodyScript + "/\r\n";
-                        }
-                    }
                 }
                 connOri.Close();
-
-                wholeScript = spFinally + grantText;
                 // write out the script into hard disk
-                return wholeScript;
+                return spFinally;
             }
             catch (Exception innere)
             {
@@ -59,8 +37,8 @@ namespace DB_Scheme_Extract.Business
             }
         }
         /***********************
-         * private methods
-         * ********************/
+        * private methods
+        * ********************/
         private string genScript(OracleConnection conn, string objName, string objType)
         {
             StringBuilder sb = new StringBuilder();

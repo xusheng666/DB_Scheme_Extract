@@ -31,9 +31,9 @@ namespace DB_Scheme_Extract.Persistence
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                throw e;
             }
             return objNameList;
         }

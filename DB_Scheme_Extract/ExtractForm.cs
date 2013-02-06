@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using DB_Scheme_Extract.Persistence;
 using DB_Scheme_Extract.Business;
+using DB_Scheme_Extract.Utility;
 
 namespace DB_Scheme_Extract
 {
@@ -17,6 +18,7 @@ namespace DB_Scheme_Extract
         public ExtractForm()
         {
             InitializeComponent();
+            tabControl1.SelectedTab = tabPage2;
         }
 
         private void generate_Click(object sender, EventArgs e)
@@ -35,8 +37,11 @@ namespace DB_Scheme_Extract
                 string appPath = Path.GetDirectoryName(Application.ExecutablePath);
 
                 GenerateClient client = new GenerateClient();
-                string outputPath = client.generateScripts(connProp, appPath);
-                resultTxt.Text = outputPath;
+                List<string> outputPathList = client.generateScripts(connProp, appPath, fileBar);
+
+                result.Visible = true;
+                resultTxt.Visible = true;
+                resultTxt.Text = outputPathList.First();
             }
         }
     }

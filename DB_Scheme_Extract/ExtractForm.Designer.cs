@@ -30,9 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.result = new System.Windows.Forms.Label();
             this.message = new System.Windows.Forms.Label();
-            this.generate = new System.Windows.Forms.Button();
             this.exportPath = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.TextBox();
@@ -42,11 +40,16 @@
             this.dataSource = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.resultTxt = new System.Windows.Forms.TextBox();
+            this.generate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.result = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.fileBar = new System.Windows.Forms.ProgressBar();
+            this.resultTxt = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,14 +60,12 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(503, 313);
+            this.tabControl1.Size = new System.Drawing.Size(503, 319);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.message);
-            this.tabPage1.Controls.Add(this.generate);
             this.tabPage1.Controls.Add(this.exportPath);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.password);
@@ -76,19 +77,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(495, 287);
+            this.tabPage1.Size = new System.Drawing.Size(495, 359);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Configuration";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // result
-            // 
-            this.result.AutoSize = true;
-            this.result.Location = new System.Drawing.Point(6, 15);
-            this.result.Name = "result";
-            this.result.Size = new System.Drawing.Size(104, 13);
-            this.result.TabIndex = 11;
-            this.result.Text = "Success write to file:";
             // 
             // message
             // 
@@ -97,16 +89,6 @@
             this.message.Name = "message";
             this.message.Size = new System.Drawing.Size(0, 13);
             this.message.TabIndex = 9;
-            // 
-            // generate
-            // 
-            this.generate.Location = new System.Drawing.Point(25, 256);
-            this.generate.Name = "generate";
-            this.generate.Size = new System.Drawing.Size(117, 23);
-            this.generate.TabIndex = 8;
-            this.generate.Text = "Generate All Objects";
-            this.generate.UseVisualStyleBackColor = true;
-            this.generate.Click += new System.EventHandler(this.generate_Click);
             // 
             // exportPath
             // 
@@ -178,46 +160,102 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.checkedListBox1);
+            this.tabPage2.Controls.Add(this.generate);
+            this.tabPage2.Controls.Add(this.panel1);
+            this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(495, 223);
+            this.tabPage2.Size = new System.Drawing.Size(495, 293);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Main Panel";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // openFileDialog1
+            // generate
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // resultTxt
-            // 
-            this.resultTxt.Location = new System.Drawing.Point(9, 46);
-            this.resultTxt.Multiline = true;
-            this.resultTxt.Name = "resultTxt";
-            this.resultTxt.Size = new System.Drawing.Size(406, 44);
-            this.resultTxt.TabIndex = 12;
+            this.generate.Location = new System.Drawing.Point(18, 133);
+            this.generate.Name = "generate";
+            this.generate.Size = new System.Drawing.Size(117, 23);
+            this.generate.TabIndex = 15;
+            this.generate.Text = "Generate All Objects";
+            this.generate.UseVisualStyleBackColor = true;
+            this.generate.Click += new System.EventHandler(this.generate_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.result);
             this.panel1.Controls.Add(this.resultTxt);
-            this.panel1.Location = new System.Drawing.Point(16, 147);
+            this.panel1.Controls.Add(this.fileBar);
+            this.panel1.Controls.Add(this.result);
+            this.panel1.Location = new System.Drawing.Point(19, 162);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(473, 103);
-            this.panel1.TabIndex = 13;
+            this.panel1.Size = new System.Drawing.Size(473, 125);
+            this.panel1.TabIndex = 14;
+            // 
+            // result
+            // 
+            this.result.AutoSize = true;
+            this.result.Location = new System.Drawing.Point(6, 62);
+            this.result.Name = "result";
+            this.result.Size = new System.Drawing.Size(117, 13);
+            this.result.TabIndex = 11;
+            this.result.Text = "Success write to folder:";
+            this.result.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(116, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Select Types to export:";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "Function",
+            "Package",
+            "Procedure",
+            "Type",
+            "Table",
+            "Trigger",
+            "View"});
+            this.checkedListBox1.Location = new System.Drawing.Point(153, 24);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(117, 109);
+            this.checkedListBox1.TabIndex = 16;
+            // 
+            // fileBar
+            // 
+            this.fileBar.Location = new System.Drawing.Point(9, 22);
+            this.fileBar.Name = "fileBar";
+            this.fileBar.Size = new System.Drawing.Size(406, 23);
+            this.fileBar.Step = 1;
+            this.fileBar.TabIndex = 12;
+            // 
+            // resultTxt
+            // 
+            this.resultTxt.Location = new System.Drawing.Point(9, 87);
+            this.resultTxt.Name = "resultTxt";
+            this.resultTxt.Size = new System.Drawing.Size(406, 20);
+            this.resultTxt.TabIndex = 13;
+            this.resultTxt.Visible = false;
             // 
             // ExtractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 325);
+            this.ClientSize = new System.Drawing.Size(527, 326);
             this.Controls.Add(this.tabControl1);
             this.Name = "ExtractForm";
             this.Text = "Form1";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -237,12 +275,14 @@
         private System.Windows.Forms.TextBox userId;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox dataSource;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button generate;
         private System.Windows.Forms.Label message;
-        private System.Windows.Forms.Label result;
-        private System.Windows.Forms.TextBox resultTxt;
+        private System.Windows.Forms.Button generate;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label result;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.ProgressBar fileBar;
+        private System.Windows.Forms.TextBox resultTxt;
 
     }
 }

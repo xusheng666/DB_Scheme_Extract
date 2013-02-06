@@ -51,7 +51,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\TriggerTemplate.cs" />
+    <Compile Include="Business\TableTemplate.cs" />
     <Compile Include="Business\ProcedureTemplate.cs" />
+    <Compile Include="Business\TemplateFactory.cs" />
+    <Compile Include="Business\ViewTemplate.cs" />
     <Compile Include="Persistence\ConnectionManager.cs" />
     <Compile Include="Persistence\ConnectionProperty.cs" />
     <Compile Include="Persistence\OracleClient.cs" />

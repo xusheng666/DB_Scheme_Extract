@@ -49,6 +49,17 @@ namespace DB_Scheme_Extract.Utility
             {TYPE_VIEW, "006-view"},
             {TYPE_TRIGGER , "008-trigger"}
         };
+
+        public static List<string> typeList = new List<string>() 
+        { 
+            TYPE_TABLE, 
+            TYPE_FUNCTION,
+            TYPE_PACKAGE,
+            TYPE_PROCEDURE,
+            TYPE_TRIGGER,
+            TYPE_TYPE,
+            TYPE_VIEW        
+        };
     }
 
 }
