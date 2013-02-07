@@ -31,13 +31,21 @@ namespace DB_Scheme_Extract
                 || String.IsNullOrEmpty(connProp.password))
             {
                 this.message.Text = "Please complete all text box above";
+                tabControl1.SelectedTab = tabPage1;
             }
             else
             {
                 string appPath = Path.GetDirectoryName(Application.ExecutablePath);
 
+                List<string> typeList = new List<string>();
+                foreach (var item in typeListBox.CheckedItems)
+                {
+                    typeList.Add(item.ToString().ToUpper());
+                }
+
                 GenerateClient client = new GenerateClient();
-                List<string> outputPathList = client.generateScripts(connProp, appPath, fileBar);
+                fileBar.Value = 0;
+                List<string> outputPathList = client.generateScripts(typeList, connProp, appPath, fileBar);
 
                 result.Visible = true;
                 resultTxt.Visible = true;

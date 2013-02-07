@@ -6,6 +6,7 @@ using DB_Scheme_Extract.Persistence;
 using System.Data;
 using Oracle.DataAccess.Client;
 using DB_Scheme_Extract.Utility;
+using System.Text.RegularExpressions;
 
 namespace DB_Scheme_Extract.Business
 {
@@ -83,6 +84,8 @@ namespace DB_Scheme_Extract.Business
                             {
                                 string firstLine = ds.Tables[0].Rows[i][4].ToString();
 
+                                firstLine = firstLine.Replace("\"", "");
+                                
                                 int startInt = firstLine.ToUpper().IndexOf(objName.ToUpper());
                                 if (startInt == -1)
                                 {
@@ -101,6 +104,10 @@ namespace DB_Scheme_Extract.Business
                                 {
                                     sb.Append(ds.Tables[0].Rows[i][4].ToString().TrimEnd() + "\r\n");
                                 }
+                            }
+                            if (ds.Tables[0].Rows.Count==1)
+                            {
+                                sb.Append("\r\n");
                             }
                         }
                         //lastLineText = ds.Tables[0].Rows[ds.Tables[0].Rows.Count - 1][4].ToString().TrimEnd();

@@ -40,13 +40,13 @@
             this.dataSource = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.typeListBox = new System.Windows.Forms.CheckedListBox();
             this.generate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.resultTxt = new System.Windows.Forms.TextBox();
+            this.fileBar = new System.Windows.Forms.ProgressBar();
             this.result = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.fileBar = new System.Windows.Forms.ProgressBar();
-            this.resultTxt = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -77,7 +77,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(495, 359);
+            this.tabPage1.Size = new System.Drawing.Size(495, 293);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Configuration";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -160,7 +160,7 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.checkedListBox1);
+            this.tabPage2.Controls.Add(this.typeListBox);
             this.tabPage2.Controls.Add(this.generate);
             this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Controls.Add(this.label5);
@@ -171,6 +171,22 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Main Panel";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // typeListBox
+            // 
+            this.typeListBox.FormattingEnabled = true;
+            this.typeListBox.Items.AddRange(new object[] {
+            "Function",
+            "Package",
+            "Procedure",
+            "Type",
+            "Table",
+            "Trigger",
+            "View"});
+            this.typeListBox.Location = new System.Drawing.Point(153, 24);
+            this.typeListBox.Name = "typeListBox";
+            this.typeListBox.Size = new System.Drawing.Size(117, 109);
+            this.typeListBox.TabIndex = 16;
             // 
             // generate
             // 
@@ -192,6 +208,22 @@
             this.panel1.Size = new System.Drawing.Size(473, 125);
             this.panel1.TabIndex = 14;
             // 
+            // resultTxt
+            // 
+            this.resultTxt.Location = new System.Drawing.Point(9, 87);
+            this.resultTxt.Name = "resultTxt";
+            this.resultTxt.Size = new System.Drawing.Size(406, 20);
+            this.resultTxt.TabIndex = 13;
+            this.resultTxt.Visible = false;
+            // 
+            // fileBar
+            // 
+            this.fileBar.Location = new System.Drawing.Point(9, 22);
+            this.fileBar.Name = "fileBar";
+            this.fileBar.Size = new System.Drawing.Size(406, 23);
+            this.fileBar.Step = 1;
+            this.fileBar.TabIndex = 12;
+            // 
             // result
             // 
             this.result.AutoSize = true;
@@ -210,38 +242,6 @@
             this.label5.Size = new System.Drawing.Size(116, 13);
             this.label5.TabIndex = 1;
             this.label5.Text = "Select Types to export:";
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Function",
-            "Package",
-            "Procedure",
-            "Type",
-            "Table",
-            "Trigger",
-            "View"});
-            this.checkedListBox1.Location = new System.Drawing.Point(153, 24);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(117, 109);
-            this.checkedListBox1.TabIndex = 16;
-            // 
-            // fileBar
-            // 
-            this.fileBar.Location = new System.Drawing.Point(9, 22);
-            this.fileBar.Name = "fileBar";
-            this.fileBar.Size = new System.Drawing.Size(406, 23);
-            this.fileBar.Step = 1;
-            this.fileBar.TabIndex = 12;
-            // 
-            // resultTxt
-            // 
-            this.resultTxt.Location = new System.Drawing.Point(9, 87);
-            this.resultTxt.Name = "resultTxt";
-            this.resultTxt.Size = new System.Drawing.Size(406, 20);
-            this.resultTxt.TabIndex = 13;
-            this.resultTxt.Visible = false;
             // 
             // ExtractForm
             // 
@@ -280,7 +280,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label result;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox typeListBox;
         private System.Windows.Forms.ProgressBar fileBar;
         private System.Windows.Forms.TextBox resultTxt;
 
