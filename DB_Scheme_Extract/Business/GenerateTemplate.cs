@@ -11,6 +11,7 @@ namespace DB_Scheme_Extract.Business
 {
     abstract class GenerateTemplate
     {
+        public const string RETCHAR = "\r\n";
         // Step 1: get all object name list for the object type
         public List<string> getObjNameList(string objType)
         {

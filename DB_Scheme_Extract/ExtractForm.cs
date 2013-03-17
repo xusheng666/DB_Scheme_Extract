@@ -18,6 +18,7 @@ namespace DB_Scheme_Extract
         public ExtractForm()
         {
             InitializeComponent();
+            // default to main tab
             tabControl1.SelectedTab = tabPage2;
         }
 
@@ -50,6 +51,24 @@ namespace DB_Scheme_Extract
                 result.Visible = true;
                 resultTxt.Visible = true;
                 resultTxt.Text = outputPathList.First();
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.checkAll.Checked)
+            {
+                for (int i = 0; i < typeListBox.Items.Count; i++)
+                {
+                    typeListBox.SetItemChecked(i, true);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < typeListBox.Items.Count; i++)
+                {
+                    typeListBox.SetItemChecked(i, false);
+                }
             }
         }
     }

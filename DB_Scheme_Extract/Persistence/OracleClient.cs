@@ -5,6 +5,7 @@ using System.Text;
 using Oracle.DataAccess.Client;
 using System.Data;
 using DB_Scheme_Extract.Utility;
+using System.IO;
 
 namespace DB_Scheme_Extract.Persistence
 {

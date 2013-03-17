@@ -47,6 +47,7 @@
             this.fileBar = new System.Windows.Forms.ProgressBar();
             this.result = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.checkAll = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -60,7 +61,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(503, 319);
+            this.tabControl1.Size = new System.Drawing.Size(503, 335);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -160,6 +161,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.checkAll);
             this.tabPage2.Controls.Add(this.typeListBox);
             this.tabPage2.Controls.Add(this.generate);
             this.tabPage2.Controls.Add(this.panel1);
@@ -167,7 +169,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(495, 293);
+            this.tabPage2.Size = new System.Drawing.Size(495, 309);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Main Panel";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -183,14 +185,14 @@
             "Table",
             "Trigger",
             "View"});
-            this.typeListBox.Location = new System.Drawing.Point(153, 24);
+            this.typeListBox.Location = new System.Drawing.Point(148, 31);
             this.typeListBox.Name = "typeListBox";
-            this.typeListBox.Size = new System.Drawing.Size(117, 109);
+            this.typeListBox.Size = new System.Drawing.Size(161, 109);
             this.typeListBox.TabIndex = 16;
             // 
             // generate
             // 
-            this.generate.Location = new System.Drawing.Point(18, 133);
+            this.generate.Location = new System.Drawing.Point(18, 148);
             this.generate.Name = "generate";
             this.generate.Size = new System.Drawing.Size(117, 23);
             this.generate.TabIndex = 15;
@@ -203,9 +205,9 @@
             this.panel1.Controls.Add(this.resultTxt);
             this.panel1.Controls.Add(this.fileBar);
             this.panel1.Controls.Add(this.result);
-            this.panel1.Location = new System.Drawing.Point(19, 162);
+            this.panel1.Location = new System.Drawing.Point(19, 177);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(473, 125);
+            this.panel1.Size = new System.Drawing.Size(473, 120);
             this.panel1.TabIndex = 14;
             // 
             // resultTxt
@@ -237,17 +239,28 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 24);
+            this.label5.Location = new System.Drawing.Point(19, 13);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(116, 13);
             this.label5.TabIndex = 1;
             this.label5.Text = "Select Types to export:";
             // 
+            // checkAll
+            // 
+            this.checkAll.AutoSize = true;
+            this.checkAll.Location = new System.Drawing.Point(148, 13);
+            this.checkAll.Name = "checkAll";
+            this.checkAll.Size = new System.Drawing.Size(137, 17);
+            this.checkAll.TabIndex = 17;
+            this.checkAll.Text = "Check All/ Uncheck All";
+            this.checkAll.UseVisualStyleBackColor = true;
+            this.checkAll.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // ExtractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 326);
+            this.ClientSize = new System.Drawing.Size(527, 349);
             this.Controls.Add(this.tabControl1);
             this.Name = "ExtractForm";
             this.Text = "Form1";
@@ -283,6 +296,7 @@
         private System.Windows.Forms.CheckedListBox typeListBox;
         private System.Windows.Forms.ProgressBar fileBar;
         private System.Windows.Forms.TextBox resultTxt;
+        private System.Windows.Forms.CheckBox checkAll;
 
     }
 }

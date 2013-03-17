@@ -47,7 +47,7 @@ namespace DB_Scheme_Extract.Utility
 	        {TYPE_FUNCTION, "004-function"},
 	        {TYPE_PROCEDURE, "005-procedure"},
             {TYPE_VIEW, "006-view"},
-            {TYPE_TRIGGER , "008-trigger"}
+            {TYPE_TRIGGER, "008-trigger"}
         };
 
         //public static List<string> typeList = new List<string>() 
@@ -60,6 +60,19 @@ namespace DB_Scheme_Extract.Utility
         //    TYPE_TYPE
         //   // TYPE_VIEW        
         //};
+
+        public const string DT_VCHAR2 = "VARCHAR2";
+        public const string DT_NVCHAR2 = "NVARCHAR2";
+        public const string DT_DATE = "DATE";
+        public const string DT_NUMBER = "NUMBER";
+        public const string DT_XML = "XMLTYPE";
+        public const string DT_BLOB = "BLOB";
+        public const string DT_NCLOB = "NCLOB";
+        public const string DT_CLOB = "CLOB";
+        public const string DT_CHAR1 = "CHAR";
+        public const string DT_TIME = "TIMESTAMP(6)";
+        public const string DT_TIMEZONE = "TIMESTAMP(6) WITH TIME ZONE";
+
     }
 
 }

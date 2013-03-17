@@ -1,0 +1,44 @@
+﻿CREATE OR REPLACE FUNCTION MS9DJA.GETLONG( P_QUERY IN VARCHAR2,
+                                      P_NAME  IN VARCHAR2,
+                                      P_VALUE IN VARCHAR2 )
+RETURN VARCHAR2
+AS
+    L_CURSOR    INTEGER DEFAULT DBMS_SQL.OPEN_CURSOR;
+    L_N         NUMBER;
+    L_LONG_VAL  VARCHAR2(250);
+    L_LONG_LEN  NUMBER;
+    L_BUFLEN    NUMBER := 250;
+    L_CURPOS    NUMBER := 0;
+    R_LONG_VAR  VARCHAR2(4000);
+BEGIN
+    DBMS_SQL.PARSE( L_CURSOR, P_QUERY, DBMS_SQL.NATIVE );
+    DBMS_SQL.BIND_VARIABLE( L_CURSOR, P_NAME, P_VALUE );
+
+    DBMS_SQL.DEFINE_COLUMN_LONG(L_CURSOR, 1);
+    L_N := DBMS_SQL.EXECUTE(L_CURSOR);
+
+    IF (DBMS_SQL.FETCH_ROWS(L_CURSOR)>0)
+    THEN
+        LOOP
+            DBMS_SQL.COLUMN_VALUE_LONG(L_CURSOR, 1, L_BUFLEN, 
+                                       L_CURPOS , L_LONG_VAL,
+                                       L_LONG_LEN );
+            L_CURPOS := L_CURPOS + L_LONG_LEN;
+            DBMS_OUTPUT.PUT_LINE( L_LONG_VAL );
+            R_LONG_VAR := R_LONG_VAR || L_LONG_VAL;
+            EXIT WHEN L_LONG_LEN = 0;
+      END LOOP;
+   END IF;
+   DBMS_OUTPUT.PUT_LINE( '====================' );
+   DBMS_OUTPUT.PUT_LINE( 'Long was ' || L_CURPOS || 
+                         ' bytes in length' );
+   DBMS_SQL.CLOSE_CURSOR(L_CURSOR);
+   RETURN R_LONG_VAR;
+EXCEPTION
+   WHEN OTHERS THEN
+      IF DBMS_SQL.IS_OPEN(L_CURSOR) THEN
+         DBMS_SQL.CLOSE_CURSOR(L_CURSOR);
+      END IF;
+      RAISE;
+END GETLONG;
+/

@@ -30,20 +30,20 @@ namespace DB_Scheme_Extract.Business
                         string grantScript = "";
                         grantScript = DBSQL.SP_GRANT.Replace("?", item);
                         grantText += grantScript;
-                        grantText += "\r\n";
+                        grantText += RETCHAR;
                     }
                     //break;
                     // prepare script write to file
-                    spFinally += spScript + "/\r\n";
+                    spFinally += spScript + "/" + RETCHAR;
 
                     // for Package or Type there will be one more object called Package Body and Type Body
                     string bodyScript = null;
-                    if (Constants.TYPE_PACKAGE.Equals(objType) || Constants.PATH_TYPE.Equals(objType))
+                    if (Constants.TYPE_PACKAGE.Equals(objType) || Constants.TYPE_TYPE.Equals(objType))
                     {
                         bodyScript = genScript(connOri, item, objType + " BODY");
                         if (!String.IsNullOrEmpty(bodyScript))
                         {
-                            spFinally += bodyScript + "/\r\n";
+                            spFinally += bodyScript + "/" + RETCHAR;
                         }
                     }
                 }
@@ -102,12 +102,12 @@ namespace DB_Scheme_Extract.Business
                                     !String.IsNullOrEmpty(ds.Tables[0].Rows[i][4].ToString().Trim()) &&
                                     !"\n".Equals(ds.Tables[0].Rows[i][4].ToString().Trim()))// not include the "\n" line
                                 {
-                                    sb.Append(ds.Tables[0].Rows[i][4].ToString().TrimEnd() + "\r\n");
+                                    sb.Append(ds.Tables[0].Rows[i][4].ToString().TrimEnd() + RETCHAR);
                                 }
                             }
                             if (ds.Tables[0].Rows.Count==1)
                             {
-                                sb.Append("\r\n");
+                                sb.Append(RETCHAR);
                             }
                         }
                         //lastLineText = ds.Tables[0].Rows[ds.Tables[0].Rows.Count - 1][4].ToString().TrimEnd();

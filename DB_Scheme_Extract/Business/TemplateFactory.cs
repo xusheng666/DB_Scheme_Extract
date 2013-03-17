@@ -17,13 +17,11 @@ namespace DB_Scheme_Extract.Business
                 case Constants.TYPE_FUNCTION:
                 case Constants.TYPE_TYPE:
                 case Constants.TYPE_PACKAGE:
+                case Constants.TYPE_TRIGGER:
                     template = new ProcedureTemplate();
                     break;
                 case Constants.TYPE_TABLE:
                     template = new TableTemplate();
-                    break;
-                case Constants.TYPE_TRIGGER:
-                    template = new TriggerTemplate();
                     break;
                 case Constants.TYPE_VIEW:
                     template = new ViewTemplate();
