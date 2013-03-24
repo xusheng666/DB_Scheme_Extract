@@ -7,7 +7,8 @@ namespace DB_Scheme_Extract.Utility
 {
     class Constants
     {
-        public const string seperator = "//";
+        public const string seperator = "\\";
+        public const string PRELOAD_PATH = seperator + "preload";
 
         public const string TYPE_TABLE = "TABLE";
         public const string TYPE_PACKAGE = "PACKAGE";
@@ -75,4 +76,12 @@ namespace DB_Scheme_Extract.Utility
 
     }
 
+    class SerialConstants
+    {
+        public const string SERIAL_OBJ_PATH = "\\serial";
+        public const string SERIAL_OBJ_PATH_EXT = ".dat";
+
+        public const string ConfigurationObject = "00001";
+        public const string CONFIGURATION_OBJECT_CLASS = "ConfigurationObject";
+    }
 }

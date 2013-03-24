@@ -26,7 +26,7 @@ namespace DB_Scheme_Extract.Business
         public string writeStringToDisk(string rootPath, string objType, string scriptStr, string userID)
         {
             FileUtil fu = new FileUtil();
-            string fileName = userID.ToLower() + "-db-ddl-"+Constants.exeSeqDict[objType];
+            string fileName = userID.ToLower() + "-db-ddl-" + Constants.exeSeqDict[objType];
             fu.setRootPath(rootPath);
 
             string outputFileName = fu.writeScript2CorrectFile(scriptStr, fileName);

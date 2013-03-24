@@ -23,7 +23,27 @@ namespace DB_Scheme_Extract.Utility
         {
             DEFAULT_ROOT_PATH = path + "//" + getTodayDateStr();
         }
+        /*******************
+         * for create file with path
+         *******************/
+        public static FileStream createFileByPath(string pathDir, string fileName)
+        {
+            if (!File.Exists(pathDir))
+            {
+                Directory.CreateDirectory(pathDir);
+            }
+            string pathString = System.IO.Path.Combine(pathDir, fileName);
+            return new FileStream(pathString, FileMode.Create);
+        }
 
+        public static FileStream readFile(string path)
+        {
+            if (!File.Exists(path))
+            {
+                throw new Exception("No File exists at "+path);
+            }
+            return new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+        }
         /*****************************************
          * below are private methods
          *****************************************/

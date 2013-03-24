@@ -10,17 +10,16 @@ namespace DB_Scheme_Extract.Business
 {
     class GenerateClient
     {
-        public List<string> generateScripts(List<string> typeList, ConnectionProperty prop, string rootPath, ProgressBar fileBar)
+        public List<string> generateScripts(List<string> typeList, string ownerName, string rootPath, ProgressBar fileBar)
         {
             List<string> pathList = new List<string>();
-            ConnectionManager.initialDBConn(prop);
             // loop every type 
-            generateObjByType(typeList, prop, rootPath, pathList, fileBar);
+            generateObjByType(typeList, ownerName, rootPath, pathList, fileBar);
             // end of loop
             return pathList;
         }
 
-        private void generateObjByType(List<string> typeList, ConnectionProperty prop, string rootPath, List<string> pathList, ProgressBar fileBar)
+        private void generateObjByType(List<string> typeList, string ownerName, string rootPath, List<string> pathList, ProgressBar fileBar)
         {
             int i = 0;
             foreach (var type in typeList)
@@ -30,7 +29,7 @@ namespace DB_Scheme_Extract.Business
                 List<string> objNameList = template.getObjNameList(type);
                 
                 string scriptStr = template.generateObjList(objNameList, type);
-                string path = template.writeStringToDisk(rootPath, type, scriptStr, prop.userID);
+                string path = template.writeStringToDisk(rootPath, type, scriptStr, ownerName);
 
                 pathList.Add(path);
                 for (int j = 1; j < objNameList.Count()+1; j++)
